@@ -1,9 +1,11 @@
-FROM node:latest-alpine
+FROM node:current-alpine
 
 # Workdir for node package
 WORKDIR /data/app
 
 COPY . /data/app
+
+ENV NODE_ENV production
 
 # Install Tini
 RUN apk --no-cache --no-progress add tini
