@@ -3,3 +3,4 @@
 !/yarn.lock
 !/.nuxt
 !/nuxt.config.js
+!/static
