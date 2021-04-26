@@ -27,7 +27,6 @@ steps:
       - lint
     commands:
       - NODE_ENV=production yarn build
-      - NODE_ENV=production yarn generate
 
   - name: publish
     image: plugins/docker
@@ -35,7 +34,7 @@ steps:
       - build
     settings:
       registry: docker.kilic.dev
-      repo: docker.kilic.dev/html-cv2
+      repo: docker.kilic.dev/html-error-pages
       username:
         from_secret: docker_username
       password:
