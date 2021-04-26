@@ -1,5 +1,9 @@
 # html-error-pages3
 
+[![Build Status](https://drone.kilic.dev/api/badges/cenk1cenk2/html-error-pages3/status.svg)](https://drone.kilic.dev/cenk1cenk2/html-error-pages3)
+
+---
+
 ## Build Setup
 
 ```bash
