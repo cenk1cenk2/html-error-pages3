@@ -17,9 +17,9 @@
           <div class="mx-auto lg:mx-0 pt-3 border-b-2 border-primary-500 opacity-50 mt-12"></div>
 
           <div class="mt-12 pb-16 lg:pb-0 w-4/5 mx-auto flex flex-wrap items-center justify-between text-5xl">
-            <a :href="`mailto:cenk@kilic.dev`"><FontAwesomeIcon :icon="fa.email" class="transform hover:scale-110 hover:text-primary-500" /></a>
-            <a href="https://srcs.kilic.dev"><FontAwesomeIcon :icon="fa.home" class="transform hover:scale-110 hover:text-primary-500" /></a>
-            <a v-if="from" :href="from"><FontAwesomeIcon :icon="fa.refresh" class="transform hover:scale-110 hover:text-primary-500" /></a>
+            <a :href="`mailto:cenk@kilic.dev`"><FontAwesomeIcon :icon="fa.email" class="transition-transform transform hover:scale-110 hover:text-primary-500" /></a>
+            <a href="https://kilic.dev"><FontAwesomeIcon :icon="fa.home" class="transition-transform transform hover:scale-110 hover:text-primary-500" /></a>
+            <a v-if="from" :href="from"><FontAwesomeIcon :icon="fa.refresh" class="transition-transform transform hover:scale-110 hover:text-primary-500" /></a>
           </div>
         </div>
       </div>
@@ -31,7 +31,6 @@
 import { faEnvelope, faHome, faRedo } from '@fortawesome/free-solid-svg-icons'
 import { computed, defineComponent, useRoute, useContext, onServerPrefetch } from '@nuxtjs/composition-api'
 import { isURL } from 'class-validator'
-import consola from 'consola'
 import httpStatus from 'http-status'
 
 export default defineComponent({
@@ -46,8 +45,6 @@ export default defineComponent({
 
         if (code && httpStatus[code] && code >= 400 && code < 600) {
           return { code, message: String(httpStatus[code]) }
-        } else {
-          consola.error('Given http code is not a valid status code: ', code)
         }
       }
 
@@ -59,8 +56,6 @@ export default defineComponent({
 
       if (!Array.isArray(from) && isURL(from)) {
         return from
-      } else {
-        consola.error('Given from field is not an valid URL: ', from)
       }
     })
 
