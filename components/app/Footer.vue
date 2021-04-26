@@ -1,5 +1,5 @@
 <template>
-  <footer class="h-16 relative w-full pt-2 lg:pt-8">
+  <footer class="h-16 relative w-full pt-2 pb-2 lg:pt-8 lg:pb-8">
     <div class="h-full w-full lg:container mx-auto px-4 lg:px-8 flex items-center justify-center">
       <div class="flex items-center space-x-4">
         <a

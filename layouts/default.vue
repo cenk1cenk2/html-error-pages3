@@ -3,7 +3,7 @@
     <span class="absolute top-5 right-5">
       <ThemeSelector />
     </span>
-    <div class="h-screen w-screen flex flex-col lg:justify-center">
+    <div class="min-h-full h-screen w-screen flex flex-col lg:justify-center">
       <Nuxt />
       <AppFooter></AppFooter>
     </div>

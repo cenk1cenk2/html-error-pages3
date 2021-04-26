@@ -53,7 +53,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: [ /@vue[\\/]composition-api/ ],
+    transpile: [ ({ isDev }) => !isDev && /@vue[\\/]composition-api/ ],
     terser: {
       terserOptions: {
         compress: {
