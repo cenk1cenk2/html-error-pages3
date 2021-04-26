@@ -1,0 +1,52 @@
+---
+kind: pipeline
+name: default
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+steps:
+  - name: install
+    image: node:current-alpine
+    commands:
+      - yarn --frozen-lockfile
+
+  - name: lint
+    image: node:current-alpine
+    depends_on:
+      - install
+    commands:
+      - yarn lint:check
+
+  - name: build
+    image: node:current-alpine
+    depends_on:
+      - lint
+    commands:
+      - NODE_ENV=production yarn build
+      - NODE_ENV=production yarn generate
+
+  - name: publish
+    image: plugins/docker
+    depends_on:
+      - build
+    settings:
+      registry: docker.kilic.dev
+      repo: docker.kilic.dev/html-cv2
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      tag:
+        - latest
+    when:
+      event:
+        - push
+      branch:
+        - master
+
+image_pull_secrets:
+  - dockerconfigjson
