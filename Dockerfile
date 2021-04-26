@@ -15,6 +15,6 @@ RUN printf "#!/bin/ash\nyarn start" > /entrypoint.sh && \
   chmod +x /entrypoint.sh
 
 # Install Node packages
-RUN yarn --production
+RUN yarn --production --frozen-lock-file
 
 ENTRYPOINT ["/sbin/tini", "-vg", "--", "/entrypoint.sh"]
